@@ -1,0 +1,10 @@
+{
+  "extends": "@cprecioso/tsconfig/esm",
+  "include": ["src/**/*", "types/**/*"],
+  "compilerOptions": {
+    "target": "es2015",
+    "rootDir": "src",
+    "noEmit": true,
+    "declaration": true
+  }
+}
