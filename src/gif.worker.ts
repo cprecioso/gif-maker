@@ -16,7 +16,7 @@ self.addEventListener("message", async (msg: MessageEvent) => {
       const { signal } = currentAbortController
       currentlyProcessingId = request.id
 
-      const gifUrl = await makeGIF(request.frameUrls, signal)
+      const gifUrl = await makeGIF(request.frames, signal)
 
       if (signal.aborted) throw "Aborted by user"
 

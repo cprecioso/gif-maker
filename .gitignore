@@ -2,3 +2,8 @@
 /*.js
 !/rollup.config.js
 /*.d.ts
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*

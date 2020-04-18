@@ -1,5 +1,6 @@
 import PQueue from "p-queue"
 import type { Request, Response } from "./communication"
+import { getImageData } from "./getImageData"
 
 export default class GifMaker {
   private readonly workerPool: readonly Worker[]
@@ -24,7 +25,13 @@ export default class GifMaker {
     const id = this.nextJobId++
     const worker = this.workerPool[id % this.workerNumber]
 
-    const req: Request = { id, command: "make-gif", frameUrls }
+    const req: Request = {
+      id,
+      command: "make-gif",
+      frames: await Promise.all(
+        frameUrls.map((url) => getImageData(url, abortSignal))
+      ),
+    }
 
     const abortHandler = () => {
       const req: Request = { id, command: "cancel-make-gif" }
@@ -43,7 +50,10 @@ export default class GifMaker {
       }
 
       worker.addEventListener("message", listener)
-      worker.postMessage(req)
+      worker.postMessage(
+        req,
+        req.frames.map((frame) => frame.data.buffer)
+      )
     })
 
     abortSignal && abortSignal.removeEventListener("abort", abortHandler)

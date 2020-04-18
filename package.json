@@ -13,6 +13,10 @@
   "author": "Carlos Precioso <kalprestito@gmail.com>",
   "main": "./main.js",
   "types": "./main.d.ts",
+  "files": [
+    "gif.worker.*",
+    "main.*"
+  ],
   "devDependencies": {
     "@cprecioso/tsconfig": "^0.0.4",
     "@rollup/plugin-commonjs": "^11.1.0",
@@ -20,12 +24,13 @@
     "@types/node": "^13.13.0",
     "@wessberg/rollup-plugin-ts": "^1.2.24",
     "get-stream": "^5.1.0",
-    "gifencoder": "^2.0.1",
-    "jpeg-js": "^0.3.7",
+    "gifencoder": "patch:gifencoder@2.0.1#./patches/gifencoder+2.0.1.patch",
     "p-queue": "^6.3.0",
+    "prettier": "^2.0.4",
     "rollup": "^2.6.1",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
+    "tslib": "^1.11.1",
     "typescript": "^3.8.3"
   }
 }

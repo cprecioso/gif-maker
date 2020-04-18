@@ -1,0 +1,12 @@
+diff --git a/lib/LZWEncoder.js b/lib/LZWEncoder.js
+index b12edc9..b3e83ef 100644
+--- a/lib/LZWEncoder.js
++++ b/lib/LZWEncoder.js
+@@ -28,6 +28,7 @@ var masks = [0x0000, 0x0001, 0x0003, 0x0007, 0x000F, 0x001F,
+              0x0FFF, 0x1FFF, 0x3FFF, 0x7FFF, 0xFFFF];
+ 
+ function LZWEncoder(width, height, pixels, colorDepth) {
++  var remaining, n_bits, curPixel
+   var initCodeSize = Math.max(2, colorDepth);
+ 
+   var accum = new Uint8Array(256);

@@ -1,6 +1,6 @@
 export type Request = Request.MakeGif | Request.CancelMakeGif
 export declare namespace Request {
-  export type MakeGif = { id: number; command: "make-gif"; frameUrls: string[] }
+  export type MakeGif = { id: number; command: "make-gif"; frames: ImageData[] }
   export type CancelMakeGif = { id: number; command: "cancel-make-gif" }
 }
 
